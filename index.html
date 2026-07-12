@@ -6,256 +6,264 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RUZICKA Jakub</title>
 
-    <!-- GSAP animace -->
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- Externí CSS -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/mobile.css">
 
     <style>
-        /* ===== NAČTENÍ FONTŮ ===== */
+        /* ===== FONTY GONTSERRAT ===== */
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Thin.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Thin.woff') format('woff');
+            src: url('fonts/Gontserrat-Thin.woff2') format('woff2'), url('fonts/Gontserrat-Thin.woff') format('woff');
             font-weight: 100; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-ThinItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-ThinItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-ThinItalic.woff2') format('woff2'), url('fonts/Gontserrat-ThinItalic.woff') format('woff');
             font-weight: 100; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Light.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Light.woff') format('woff');
+            src: url('fonts/Gontserrat-Light.woff2') format('woff2'), url('fonts/Gontserrat-Light.woff') format('woff');
             font-weight: 300; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-LightItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-LightItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-LightItalic.woff2') format('woff2'), url('fonts/Gontserrat-LightItalic.woff') format('woff');
             font-weight: 300; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Regular.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Regular.woff') format('woff');
+            src: url('fonts/Gontserrat-Regular.woff2') format('woff2'), url('fonts/Gontserrat-Regular.woff') format('woff');
             font-weight: 400; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Italic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Italic.woff') format('woff');
+            src: url('fonts/Gontserrat-Italic.woff2') format('woff2'), url('fonts/Gontserrat-Italic.woff') format('woff');
             font-weight: 400; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Medium.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Medium.woff') format('woff');
+            src: url('fonts/Gontserrat-Medium.woff2') format('woff2'), url('fonts/Gontserrat-Medium.woff') format('woff');
             font-weight: 500; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-MediumItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-MediumItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-MediumItalic.woff2') format('woff2'), url('fonts/Gontserrat-MediumItalic.woff') format('woff');
             font-weight: 500; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-SemiBold.woff2') format('woff2'),
-                 url('fonts/Gontserrat-SemiBold.woff') format('woff');
+            src: url('fonts/Gontserrat-SemiBold.woff2') format('woff2'), url('fonts/Gontserrat-SemiBold.woff') format('woff');
             font-weight: 600; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-SemiBoldItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-SemiBoldItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-SemiBoldItalic.woff2') format('woff2'), url('fonts/Gontserrat-SemiBoldItalic.woff') format('woff');
             font-weight: 600; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Bold.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Bold.woff') format('woff');
+            src: url('fonts/Gontserrat-Bold.woff2') format('woff2'), url('fonts/Gontserrat-Bold.woff') format('woff');
             font-weight: 700; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-BoldItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-BoldItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-BoldItalic.woff2') format('woff2'), url('fonts/Gontserrat-BoldItalic.woff') format('woff');
             font-weight: 700; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-ExtraBold.woff2') format('woff2'),
-                 url('fonts/Gontserrat-ExtraBold.woff') format('woff');
+            src: url('fonts/Gontserrat-ExtraBold.woff2') format('woff2'), url('fonts/Gontserrat-ExtraBold.woff') format('woff');
             font-weight: 800; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-ExtraBoldItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-ExtraBoldItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-ExtraBoldItalic.woff2') format('woff2'), url('fonts/Gontserrat-ExtraBoldItalic.woff') format('woff');
             font-weight: 800; font-style: italic; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-Black.woff2') format('woff2'),
-                 url('fonts/Gontserrat-Black.woff') format('woff');
+            src: url('fonts/Gontserrat-Black.woff2') format('woff2'), url('fonts/Gontserrat-Black.woff') format('woff');
             font-weight: 900; font-style: normal; font-display: swap;
         }
         @font-face {
             font-family: 'Gontserrat';
-            src: url('fonts/Gontserrat-BlackItalic.woff2') format('woff2'),
-                 url('fonts/Gontserrat-BlackItalic.woff') format('woff');
+            src: url('fonts/Gontserrat-BlackItalic.woff2') format('woff2'), url('fonts/Gontserrat-BlackItalic.woff') format('woff');
             font-weight: 900; font-style: italic; font-display: swap;
         }
 
-        /* ===== APLIKACE FONTU ===== */
+        /* Globální font */
         body {
             font-family: 'Gontserrat', sans-serif;
             font-weight: 400;
         }
 
-        h1, h2, h3, h4, h5, h6,
-        .nav-links a,
-        .btn,
-        .section-label,
-        .hero-number,
-        .service-number,
-        .portfolio-number {
-            font-weight: 700;
-        }
-
-        footer p, .about-item p {
-            font-weight: 300;
-        }
-
-        /* ===== ROZBALOVACÍ DETAIL SLUŽBY ===== */
-        .services-list {
+        /* ===== SLUŽBY – VYLEPŠENÝ STYL ===== */
+        .services-layout {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .services-preview {
+            flex: 3;
+            min-width: 0;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-inner {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .services-list {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
         }
 
         .service-item {
-            flex: 1 1 calc(33.333% - 1rem);
-            min-width: 280px;
-            background: #f5f5f5;
-            padding: 2rem 1.5rem;
-            border-radius: 4px;
+            padding: 1.2rem 1.5rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 6px;
             cursor: pointer;
+            font-weight: 500;
+            color: #ccc;
+            transition: all 0.3s ease;
             position: relative;
-            transition: background 0.3s, box-shadow 0.3s;
-            box-sizing: border-box;
+            overflow: hidden;
         }
 
         .service-item:hover {
-            background: #eaeaea;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            transform: translateX(5px);
         }
 
-        .service-item .service-number {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .service-item h3 {
-            margin: 0 0 0.5rem;
-        }
-
-        .service-item p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        /* Detailní panel – skrytý, pod položkou */
-        .service-detail {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 0 0 4px 4px;
-            margin-top: -4px; /* aby navazovalo */
-            position: relative;
-            z-index: 1;
-        }
-
-        .service-detail-inner {
-            padding: 0 2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease 0.2s;
-        }
-
-        .service-item.active + .service-detail,
-        .service-item.active .service-detail {
-            max-height: 2000px; /* dostatečně velká hodnota */
-            margin-top: 0;
-        }
-
-        .service-item.active + .service-detail .service-detail-inner,
-        .service-item.active .service-detail .service-detail-inner {
-            opacity: 1;
-            padding: 2rem;
-        }
-
-        /* Zarovnání tlačítka zavřít */
-        .detail-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            line-height: 1;
-            cursor: pointer;
-            color: #333;
-            z-index: 2;
-            opacity: 0.6;
-            transition: opacity 0.2s;
-        }
-
-        .detail-close:hover {
-            opacity: 1;
-        }
-
-        .detail-title {
-            font-size: 2rem;
+        .service-item.active {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            border-color: rgba(255,255,255,0.2);
+            box-shadow: 0 0 20px rgba(255,255,255,0.05);
         }
 
-        .detail-text {
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            max-width: 800px;
+        .service-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: #fff;
+            border-radius: 0 2px 2px 0;
         }
 
-        .detail-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .detail-images img {
+        /* Náhledy */
+        .preview-hero img {
             width: 100%;
             border-radius: 4px;
-            display: block;
-            background: #f0f0f0;
+            object-fit: cover;
         }
 
-        /* Když je položka aktivní, upravíme její vzhled */
-        .service-item.active {
-            background: #ffffff;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 4px 4px 0 0;
+        .preview-hero h3 {
+            font-size: 1.8rem;
+            margin: 1rem 0 0.5rem;
+            color: #fff;
+        }
+
+        .preview-hero p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Carousel */
+        .carousel-container {
             position: relative;
-            z-index: 2;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .carousel-slides img {
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+            object-fit: cover;
+        }
+
+        .carousel-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .carousel-thumbnails img {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 3px;
+            cursor: pointer;
+            opacity: 0.4;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .carousel-thumbnails img.active-thumb {
+            opacity: 1;
+            border-color: #fff;
+            transform: scale(1.05);
+        }
+
+        .carousel-caption {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        .preview-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .preview-video iframe,
+        .preview-video video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .services-layout {
+                flex-direction: column-reverse;
+            }
+            .service-item:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -265,13 +273,9 @@
     <!-- Navigace -->
     <nav id="nav">
         <div class="nav-container">
-            <a href="#top" class="logo">
-                <img src="img/logo.svg" alt="RJ Logo" width="32" height="32">
-            </a>
+            <a href="#top" class="logo"><img src="img/logo.svg" alt="RJ Logo" width="32" height="32"></a>
             <button class="menu-toggle" id="menuToggle" aria-label="Otevřít menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#o-mne">O MNĚ</a></li>
@@ -288,7 +292,7 @@
             <div class="hero-grid">
                 <div>
                     <h1>RŮŽIČKA<br>JAKUB</h1>
-                    <p>Webový designer zaměřený na minimalistický přístup, čistou typografii a funkční design. Vytvářím digitální zážitky, které překvapují svou jednoduchostí.</p>
+                    <p>Webový designer zaměřený na minimalistický přístup, čistou typografii a funkční design.</p>
                     <div class="cta-buttons">
                         <a href="#kontakt" class="btn"><span>ZAČÍT PROJEKT</span></a>
                         <a href="#portfolio" class="btn"><span>PRÁCE</span></a>
@@ -305,32 +309,24 @@
             <div class="section-label">FILOZOFIE</div>
             <h2 class="section-title">DESIGN JE O ŘEŠENÍ<br>PROBLÉMŮ PLYNULÉ INTERAKCE</h2>
             <div class="about-grid">
-                <div class="about-item">
-                    <div class="icon"><img src="img/icon-precision.svg" alt="Přesnost" width="40" height="40"></div>
-                    <h3>PŘESNOST</h3>
-                    <p>Každý pixel na svém místě. Preciznost v detailech vytváří dokonalý celek a odlišuje průměr od výjimečnosti.</p>
-                </div>
-                <div class="about-item">
-                    <div class="icon"><img src="img/icon-harmony.svg" alt="Harmonie" width="40" height="40"></div>
-                    <h3>HARMONIE</h3>
-                    <p>Rovnováha mezi formou a funkcí. Design, který nejen vypadá dobře, ale především dobře funguje pro uživatele.</p>
-                </div>
-                <div class="about-item">
-                    <div class="icon"><img src="img/icon-system.svg" alt="Systém" width="40" height="40"></div>
-                    <h3>SYSTÉM</h3>
-                    <p>Konzistentní designový systém zajišťuje soudržnost napříč všemi platformami a zaručuje stabilitu značky.</p>
-                </div>
+                <div class="about-item"><div class="icon"><img src="img/icon-precision.svg" alt="Přesnost" width="40" height="40"></div><h3>PŘESNOST</h3><p>Každý pixel na svém místě.</p></div>
+                <div class="about-item"><div class="icon"><img src="img/icon-harmony.svg" alt="Harmonie" width="40" height="40"></div><h3>HARMONIE</h3><p>Rovnováha mezi formou a funkcí.</p></div>
+                <div class="about-item"><div class="icon"><img src="img/icon-system.svg" alt="Systém" width="40" height="40"></div><h3>SYSTÉM</h3><p>Konzistentní designový systém.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Služby -->
+    <!-- Služby (vylepšený layout) -->
     <section id="sluzby" class="services">
         <div class="container">
             <div class="section-label">CO NABÍZÍM</div>
             <h2 class="section-title">SLUŽBY</h2>
-            <div class="services-list" id="servicesList">
-                <!-- Služby se vygenerují JS, aby se k nim přidal detail -->
+
+            <div class="services-layout">
+                <div class="services-preview" id="previewContainer">
+                    <div class="preview-inner" id="previewInner"></div>
+                </div>
+                <div class="services-list" id="servicesList"></div>
             </div>
         </div>
     </section>
@@ -365,162 +361,233 @@
                 <h4>© 2025 JAKUB RŮŽIČKA</h4>
                 <p style="color: var(--gray); font-size: 0.9rem;">Webový designer<br>Praha, Česká republika</p>
             </div>
-            <div class="footer-links">
-                <a href="#">@</a>
-            </div>
+            <div class="footer-links"><a href="#">@</a></div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // Data služeb (stejná jako dříve)
-        const servicesData = [
+        // Data služeb
+        const services = [
             {
-                title: "GRAPHIC DESIGN",
-                text: "Grafický design je základem vizuální komunikace. Zaměřuji se na čistou typografii, vyváženou kompozici a nadčasový styl. Každý projekt začíná pochopením vaší značky a cílové skupiny. Výsledkem jsou loga, tiskoviny, digitální grafika i vizuální systémy, které posilují identitu a zanechávají dojem. Pracuji s nejmodernějšími nástroji a trendy, ale vždy s důrazem na funkčnost a jednoduchost.",
-                images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Graphic+Design+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Graphic+Design+2",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Graphic+Design+3"
-                ]
+                name: "GRAPHIC DESIGN",
+                previewType: "hero",
+                img: "https://placehold.co/800x400/2d2d2d/ffffff?text=Graphic+Design",
+                title: "Grafický design",
+                desc: "Vizuální styl, typografie a kompozice. Tvořím nadčasovou identitu."
             },
             {
-                title: "WEBDESIGN",
-                text: "Webdesign vnímám jako spojení estetiky a technické preciznosti. Tvořím responzivní weby, které skvěle fungují na všech zařízeních. Důraz kladu na rychlost načítání, přístupnost a intuitivní uživatelské rozhraní. Každý layout je promyšlený od prvního kliknutí až po konverzi. Spolupracuji s vývojáři nebo dodávám kompletní front‑end řešení šité na míru vašim potřebám.",
+                name: "WEBDESIGN",
+                previewType: "carousel",
                 images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Webdesign+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Webdesign+2",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Webdesign+3"
-                ]
+                    "https://placehold.co/800x400/4a4a4a/ffffff?text=Web+1",
+                    "https://placehold.co/800x400/5a5a5a/ffffff?text=Web+2",
+                    "https://placehold.co/800x400/6a6a6a/ffffff?text=Web+3",
+                    "https://placehold.co/800x400/7a7a7a/ffffff?text=Web+4"
+                ],
+                captions: ["Responzivní design", "UI komponenty", "Layout a mřížka", "Mobilní první přístup"]
             },
             {
-                title: "WIREFRAME & PLAN",
-                text: "Než začne samotný design, je nutné postavit pevné základy. Vytvářím podrobné wireframy a plány informační architektury, které definují strukturu webu či aplikace. Pomáhají sladit očekávání klienta s technickými možnostmi a odhalují potenciální problémy ještě před fází grafiky. Výsledkem je jasná mapa obsahu a funkčních prvků, která šetří čas i peníze.",
-                images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Wireframe+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Wireframe+2"
-                ]
+                name: "WIREFRAME & PLAN",
+                previewType: "video",
+                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
             },
             {
-                title: "BRANDING",
-                text: "Silná značka stojí na konzistentním vizuálním jazyku. Branding, který vytvářím, zahrnuje logo, barevnou paletu, typografii a celý design systém. Ten pak slouží jako jednotící prvek napříč všemi materiály – od webu přes vizitky až po sociální sítě. Každý detail je podřízen příběhu značky a jejímu poslání. Pravidla, která nastavím, usnadňují práci vám i dalším tvůrcům.",
-                images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Branding+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Branding+2",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Branding+3"
-                ]
+                name: "BRANDING",
+                previewType: "hero",
+                img: "https://placehold.co/800x400/3d3d3d/ffffff?text=Branding",
+                title: "Branding & identita",
+                desc: "Logo, barevnost, design systém. Jednotný vizuální jazyk."
             },
             {
-                title: "SEO OPTIMALIZACE",
-                text: "Technické SEO je neviditelná síla, která rozhoduje o viditelnosti webu. Optimalizuji strukturu kódu, rychlost načítání, meta data i hierarchii nadpisů. Spolupracuji s copywritery na strategii klíčových slov, ale hlavní doménou je technická stránka – čistý a validní HTML, správné schema.org značení a optimalizace obrázků. Výsledkem je web, který vyhledávače milují.",
-                images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=SEO+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=SEO+2"
-                ]
+                name: "SEO OPTIMALIZACE",
+                previewType: "hero",
+                img: "https://placehold.co/800x400/4d4d4d/ffffff?text=SEO",
+                title: "SEO optimalizace",
+                desc: "Technické SEO, struktura obsahu, výkon."
             },
             {
-                title: "UI & UX CONCEPT",
-                text: "Uživatelský prožitek je pro mě alfou a omegou digitálního produktu. Navrhuji intuitivní uživatelské toky, interakce a prototypy, které testují reálné scénáře. Spojuji poznatky z psychologie, dat a designu, aby každá obrazovka plnila svůj účel přirozeně a bez zbytečných překážek. Prototypy vytvářím v nástrojích jako Figma, kde se dají okamžitě ověřovat nápady.",
+                name: "UI & UX CONCEPT",
+                previewType: "carousel",
                 images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=UI+UX+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=UI+UX+2",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=UI+UX+3"
-                ]
+                    "https://placehold.co/800x400/2a2a2a/ffffff?text=UX+1",
+                    "https://placehold.co/800x400/3a3a3a/ffffff?text=UX+2",
+                    "https://placehold.co/800x400/4a4a4a/ffffff?text=UX+3",
+                    "https://placehold.co/800x400/5a5a5a/ffffff?text=UX+4"
+                ],
+                captions: ["Uživatelský výzkum", "Drátěné modely", "Prototypy", "Testování"]
             },
             {
-                title: "PROJECT STRUCTURE",
-                text: "Každý úspěšný projekt potřebuje pevnou architekturu. Pomáhám nastavit logiku řešení, datové struktury a obsahové moduly tak, aby byl web přehledný a snadno spravovatelný. Spolupracuji s vývojářskými týmy na definici API, komponent a škálovatelných systémů. Mým cílem je, aby kód i obsah zůstaly čitelné a flexibilní i po letech rozvoje.",
-                images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Project+Structure+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Project+Structure+2"
-                ]
+                name: "PROJECT STRUCTURE",
+                previewType: "hero",
+                img: "https://placehold.co/800x400/1a1a1a/ffffff?text=Project+Structure",
+                title: "Architektura projektu",
+                desc: "Logická struktura, datové modely, přehlednost."
             },
             {
-                title: "MARKETING & PROMO",
-                text: "Digitální obsah prodává. Připravuji vizuály pro online kampaně, sociální sítě a newslettery, které konzistentně navazují na identitu značky. Od bannerů po animované spoty – vše s důrazem na jasné sdělení a estetiku. Měřím výsledky a navrhuji úpravy pro maximální dopad. Marketingový design, který nejen zaujme, ale i konvertuje.",
+                name: "MARKETING & PROMO",
+                previewType: "carousel",
                 images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Marketing+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Marketing+2",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=Marketing+3"
-                ]
+                    "https://placehold.co/800x400/6d6d6d/ffffff?text=Marketing+1",
+                    "https://placehold.co/800x400/7d7d7d/ffffff?text=Marketing+2",
+                    "https://placehold.co/800x400/8d8d8d/ffffff?text=Marketing+3",
+                    "https://placehold.co/800x400/9d9d9d/ffffff?text=Marketing+4"
+                ],
+                captions: ["Online kampaně", "Sociální sítě", "Newslettery", "Analytika"]
             },
             {
-                title: "APP STRUCTURE MAP",
-                text: "Vizualizace aplikace od prvního spuštění po složité procesy. Mapuji obrazovky, přechody a datové toky, aby bylo jasné, jak se uživatel pohybuje. Tyto mapy slouží jako podklad pro vývojáře i designéry a odhalují slabá místa ještě před napsáním jediného řádku kódu. Ideální nástroj pro startupy i zavedené produkty při redesignu.",
-                images: [
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=App+Map+1",
-                    "https://placehold.co/600x400/2d2d2d/ffffff?text=App+Map+2"
-                ]
+                name: "APP STRUCTURE MAP",
+                previewType: "video",
+                videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
             }
         ];
 
-        const servicesList = document.getElementById('servicesList');
+        const previewInner = document.getElementById('previewInner');
+        const servicesListEl = document.getElementById('servicesList');
+        const servicesSection = document.getElementById('sluzby');
+        let activeIndex = 0;
+        let isAnimating = false;
+        let scrollTimeout;
 
-        // Sestavení HTML struktury
-        function renderServices() {
-            servicesList.innerHTML = '';
-            servicesData.forEach((service, index) => {
-                // Položka
-                const item = document.createElement('div');
-                item.className = 'service-item';
-                item.setAttribute('data-index', index);
-                item.innerHTML = `
-                    <div class="service-number">${String(index + 1).padStart(2, '0')}</div>
-                    <h3>${service.title}</h3>
-                    <p>${service.title === 'GRAPHIC DESIGN' ? 'VIZUÁLNÍ STYL · TYPOGRAFIE · KOMPOZICE' :
-                        service.title === 'WEBDESIGN' ? 'RESPONZIVNÍ WEBY · UI LAYOUTY · STRUKTURA' :
-                        service.title === 'WIREFRAME & PLAN' ? 'INFORMAČNÍ ARCHITEKTURA · FUNKČNÍ NÁVRH' :
-                        service.title === 'BRANDING' ? 'IDENTITA ZNAČKY · DESIGN SYSTÉM · PRAVIDLA' :
-                        service.title === 'SEO OPTIMALIZACE' ? 'TECHNICKÉ SEO · STRUKTURA OBSAHU · VÝKON' :
-                        service.title === 'UI & UX CONCEPT' ? 'UŽIVATELSKÉ TOKY · INTERAKCE · PROTOTYPY' :
-                        service.title === 'PROJECT STRUCTURE' ? 'ARCHITEKTURA ŘEŠENÍ · LOGIKA · PŘEHLEDNOST' :
-                        service.title === 'MARKETING & PROMO' ? 'ONLINE PREZENTACE · KAMPANĚ · DIGITÁLNÍ OBSAH' :
-                        'VIZUALIZACE APLIKACE · TOK OBRAZOVEK'}</p>
-                `;
+        // Generování seznamu
+        services.forEach((service, idx) => {
+            const item = document.createElement('div');
+            item.className = 'service-item' + (idx === 0 ? ' active' : '');
+            item.textContent = service.name;
+            item.dataset.index = idx;
+            item.addEventListener('click', () => {
+                if (!isAnimating) setActive(idx);
+            });
+            servicesListEl.appendChild(item);
+        });
 
-                // Detailní panel
-                const detail = document.createElement('div');
-                detail.className = 'service-detail';
-                detail.innerHTML = `
-                    <button class="detail-close">&times;</button>
-                    <div class="service-detail-inner">
-                        <div class="detail-title">${service.title}</div>
-                        <div class="detail-text">${service.text}</div>
-                        <div class="detail-images">
-                            ${service.images.map(img => `<img src="${img}" alt="${service.title}">`).join('')}
-                        </div>
+        // Vytvoření HTML pro náhled (bez vkládání do DOM, jen vrací string)
+        function getPreviewHTML(service) {
+            if (service.previewType === 'hero') {
+                return `
+                    <div class="preview-hero">
+                        <img src="${service.img}" alt="">
+                        <h3>${service.title}</h3>
+                        <p>${service.desc}</p>
                     </div>
                 `;
+            } else if (service.previewType === 'carousel') {
+                const imagesHtml = service.images.map(src => `<img src="${src}" alt="">`).join('');
+                const thumbsHtml = service.images.map((src, i) =>
+                    `<img src="${src}" data-slide="${i}" class="${i === 0 ? 'active-thumb' : ''}" alt="">`
+                ).join('');
+                return `
+                    <div class="carousel-container" id="carousel-${activeIndex}">
+                        <div class="carousel-slides">${imagesHtml}</div>
+                    </div>
+                    <div class="carousel-thumbnails" id="thumbnails-${activeIndex}">${thumbsHtml}</div>
+                    <div class="carousel-caption" id="caption-${activeIndex}">${service.captions[0]}</div>
+                `;
+            } else if (service.previewType === 'video') {
+                return `
+                    <div class="preview-video">
+                        <iframe src="${service.videoUrl}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+        }
 
-                // Přidání do seznamu
-                servicesList.appendChild(item);
-                servicesList.appendChild(detail);
-
-                // Event na kliknutí položky
-                item.addEventListener('click', (e) => {
-                    // Pokud už je aktivní, zavřít (toggle)
-                    if (item.classList.contains('active')) {
-                        item.classList.remove('active');
-                    } else {
-                        // Zavřít všechny ostatní
-                        document.querySelectorAll('.service-item.active').forEach(el => el.classList.remove('active'));
-                        item.classList.add('active');
-                        // Scrollovat k detailu, aby byl vidět
-                        setTimeout(() => {
-                            detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }, 100);
+        // Animované přepnutí náhledu
+        function animatePreview(service) {
+            // Fade out stávajícího obsahu
+            gsap.to(previewInner, {
+                opacity: 0,
+                duration: 0.25,
+                onComplete: () => {
+                    // Nastavit nový obsah
+                    previewInner.innerHTML = getPreviewHTML(service);
+                    // Inicializovat carousel pokud je to carousel
+                    if (service.previewType === 'carousel') {
+                        initCarousel(activeIndex, service);
                     }
-                });
-
-                // Event na tlačítko zavřít v detailu
-                detail.querySelector('.detail-close').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    item.classList.remove('active');
-                });
+                    // Fade in
+                    gsap.fromTo(previewInner, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+                    isAnimating = false;
+                }
             });
         }
 
-        renderServices();
+        function initCarousel(index, service) {
+            const slidesDiv = document.querySelector(`#carousel-${index} .carousel-slides`);
+            const thumbnailsDiv = document.getElementById(`thumbnails-${index}`);
+            const caption = document.getElementById(`caption-${index}`);
+            if (!slidesDiv || !thumbnailsDiv || !caption) return;
+
+            let currentSlide = 0;
+            function goToSlide(n) {
+                currentSlide = n;
+                gsap.to(slidesDiv, { x: `-${currentSlide * 100}%`, duration: 0.4, ease: "power2.out" });
+                thumbnailsDiv.querySelectorAll('img').forEach((img, i) => {
+                    img.classList.toggle('active-thumb', i === currentSlide);
+                });
+                caption.textContent = service.captions[currentSlide];
+            }
+
+            thumbnailsDiv.addEventListener('click', (e) => {
+                const img = e.target.closest('img');
+                if (!img) return;
+                const slideIdx = parseInt(img.dataset.slide, 10);
+                if (!isNaN(slideIdx)) goToSlide(slideIdx);
+            });
+        }
+
+        function setActive(index) {
+            if (activeIndex === index || isAnimating) return;
+            isAnimating = true;
+
+            // Aktualizace aktivní třídy v seznamu
+            document.querySelector('.service-item.active')?.classList.remove('active');
+            const items = document.querySelectorAll('.service-item');
+            items[index].classList.add('active');
+            activeIndex = index;
+
+            // Animovat náhled
+            animatePreview(services[index]);
+        }
+
+        // Inicializace prvního náhledu
+        previewInner.innerHTML = getPreviewHTML(services[0]);
+        if (services[0].previewType === 'carousel') {
+            initCarousel(0, services[0]);
+        }
+
+        // === Scroll/Touch navigace ===
+        servicesSection.addEventListener('wheel', (e) => {
+            if (isAnimating) {
+                e.preventDefault();
+                return;
+            }
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const maxIdx = services.length - 1;
+            if ((direction > 0 && activeIndex < maxIdx) || (direction < 0 && activeIndex > 0)) {
+                e.preventDefault();
+                setActive(activeIndex + direction);
+            }
+        }, { passive: false });
+
+        // Touch podpora
+        let touchStartY = 0;
+        servicesSection.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        servicesSection.addEventListener('touchmove', (e) => {
+            const touchY = e.touches[0].clientY;
+            const diff = touchStartY - touchY;
+            if (Math.abs(diff) > 30 && !isAnimating) {
+                const direction = diff > 0 ? 1 : -1;
+                const maxIdx = services.length - 1;
+                if ((direction > 0 && activeIndex < maxIdx) || (direction < 0 && activeIndex > 0)) {
+                    e.preventDefault();
+                    setActive(activeIndex + direction);
+                }
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
