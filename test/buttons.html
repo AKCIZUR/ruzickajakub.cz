@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glassmorphic Grid</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-500-normal.css" />
+    <style>
+        @property --angle-1 {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: -75deg;
+        }
+
+        @property --angle-2 {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: -45deg;
+        }
+
+        :root {
+            --global--size: clamp(1rem, 2vw, 2rem);
+            --anim--hover-time: 400ms;
+            --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--global--size);
+            background-color: rgba(215, 215, 215, 1);
+            font-family: "Inter", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* ── Grid Layout ── */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(1rem, 3vw, 2.5rem);
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 1;
+        }
+
+        /* ── .button-wrap ── */
+        .button-wrap {
+            position: relative;
+            z-index: 2;
+            border-radius: 50%;
+            background: transparent;
+            pointer-events: none;
+            transition: all var(--anim--hover-time) var(--anim--hover-ease);
+            aspect-ratio: 1;
+        }
+
+        .button-shadow {
+            --shadow-cuttoff-fix: 1em;
+            position: absolute;
+            width: calc(100% + var(--shadow-cuttoff-fix));
+            height: calc(100% + var(--shadow-cuttoff-fix));
+            top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+            left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+            filter: blur(clamp(1px, 0.0625em, 6px));
+            -webkit-filter: blur(clamp(1px, 0.0625em, 6px));
+            -moz-filter: blur(clamp(1px, 0.0625em, 6px));
+            -ms-filter: blur(clamp(1px, 0.0625em, 6px));
+            overflow: visible;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+
+        .button-shadow::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+            width: calc(100% - var(--shadow-cuttoff-fix) - 0.125em);
+            height: calc(100% - var(--shadow-cuttoff-fix) - 0.125em);
+            top: calc(var(--shadow-cuttoff-fix) - 0.25em);
+            left: calc(var(--shadow-cuttoff-fix) - 0.4375em);
+            padding: 0.0625em;
+            box-sizing: border-box;
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+            transition: all var(--anim--hover-time) var(--anim--hover-ease);
+            overflow: visible;
+            opacity: 1;
+        }
+
+        /* ── shared <button> ── */
+        button {
+            --border-width: clamp(1px, 0.0625em, 2px);
+            all: unset;
+            cursor: pointer;
+            position: relative;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            pointer-events: auto;
+            z-index: 3;
+            background: linear-gradient(-75deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.2),
+                    rgba(255, 255, 255, 0.05));
+            border-radius: 50%;
+            box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+                inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+                0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+                0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+                0 0 0 0 rgba(255, 255, 255, 1);
+            backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+            -webkit-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+            -moz-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+            -ms-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
+            transition: all var(--anim--hover-time) var(--anim--hover-ease);
+            will-change: transform;
+
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        button:hover {
+            transform: scale(0.95);
+            backdrop-filter: blur(0.01em);
+            -webkit-backdrop-filter: blur(0.01em);
+            -moz-backdrop-filter: blur(0.01em);
+            -ms-backdrop-filter: blur(0.01em);
+            box-shadow: inset 0 0.2em 0.4em rgba(0, 0, 0, 0.15),
+                inset 0 -0.2em 0.4em rgba(255, 255, 255, 0.7),
+                0 0 0 0 rgba(0, 0, 0, 0),
+                0 0 0 0 rgba(255, 255, 255, 0);
+        }
+
+        button:active {
+            transform: scale(0.92);
+            box-shadow: inset 0 0.4em 0.8em rgba(0, 0, 0, 0.25),
+                inset 0 -0.4em 0.8em rgba(255, 255, 255, 0.5),
+                0 0 0 0 rgba(0, 0, 0, 0),
+                0 0 0 0 rgba(255, 255, 255, 0);
+        }
+
+        /* ── BLOP animace ── */
+        @keyframes blop {
+            0% {
+                transform: scale(1) translateY(0) rotate(0deg);
+                box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+                    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+                    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+                    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2);
+            }
+            25% {
+                transform: scale(0.92) translateY(0.2em) rotate(-1.5deg);
+                box-shadow: inset 0 0.5em 1em rgba(0, 0, 0, 0.35),
+                    inset 0 -0.3em 0.6em rgba(255, 255, 255, 0.3),
+                    0 0 0 0 rgba(0, 0, 0, 0),
+                    0 0 0 0 rgba(255, 255, 255, 0);
+            }
+            55% {
+                transform: scale(1.04) translateY(-0.12em) rotate(1.5deg);
+                box-shadow: inset 0 0.2em 0.4em rgba(0, 0, 0, 0.1),
+                    inset 0 -0.4em 0.8em rgba(255, 255, 255, 0.6),
+                    0 0.1em 0.05em rgba(0, 0, 0, 0.05),
+                    0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.4);
+            }
+            75% {
+                transform: scale(0.98) translateY(0.05em) rotate(-0.5deg);
+                box-shadow: inset 0 0.2em 0.4em rgba(0, 0, 0, 0.15),
+                    inset 0 -0.2em 0.4em rgba(255, 255, 255, 0.5),
+                    0 0 0 0 rgba(0, 0, 0, 0);
+            }
+            100% {
+                transform: scale(1) translateY(0) rotate(0deg);
+                box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+                    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+                    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+                    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        button.blop-anim {
+            animation: blop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* ── text a ostatní prvky ── */
+        button span {
+            position: relative;
+            display: block;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            font-family: "Inter", sans-serif;
+            letter-spacing: -0.05em;
+            font-weight: 500;
+            font-size: 1.5em;
+            color: rgba(50, 50, 50, 1);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-shadow: 0em 0.15em 0.05em rgba(0, 0, 0, 0.1);
+            transition: all var(--anim--hover-time) var(--anim--hover-ease);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        button:hover span {
+            text-shadow: 0.025em 0.025em 0.025em rgba(0, 0, 0, 0.12);
+        }
+
+        button span::after {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 1;
+            width: calc(100% - var(--border-width));
+            height: calc(100% - var(--border-width));
+            top: calc(0% + var(--border-width) / 2);
+            left: calc(0% + var(--border-width) / 2);
+            box-sizing: border-box;
+            border-radius: 50%;
+            overflow: clip;
+            background: linear-gradient(var(--angle-2),
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.5) 40% 50%,
+                    rgba(255, 255, 255, 0) 55%);
+            z-index: 3;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            background-repeat: no-repeat;
+            transition: background-position calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease),
+                --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+        }
+
+        button::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            border-radius: 50%;
+            width: calc(100% + var(--border-width));
+            height: calc(100% + var(--border-width));
+            top: calc(0% - var(--border-width) / 2);
+            left: calc(0% - var(--border-width) / 2);
+            padding: var(--border-width);
+            box-sizing: border-box;
+            background: conic-gradient(from var(--angle-1) at 50% 50%,
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0) 5% 40%,
+                    rgba(0, 0, 0, 0.5) 50%,
+                    rgba(0, 0, 0, 0) 60% 95%,
+                    rgba(0, 0, 0, 0.5)),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask-composite: exclude;
+            transition: --angle-1 500ms ease;
+            box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── stínová vrstva ── */
+        .button-wrap:has(button:hover) .button-shadow {
+            filter: blur(clamp(2px, 0.0625em, 6px));
+            -webkit-filter: blur(clamp(2px, 0.0625em, 6px));
+            -moz-filter: blur(clamp(2px, 0.0625em, 6px));
+            -ms-filter: blur(clamp(2px, 0.0625em, 6px));
+            transition: filter var(--anim--hover-time) var(--anim--hover-ease);
+        }
+
+        .button-wrap:has(button:hover) .button-shadow::after {
+            top: calc(var(--shadow-cuttoff-fix) - 0.4375em);
+            opacity: 1;
+        }
+
+        .button-wrap:has(button:active) .button-shadow {
+            filter: blur(clamp(2px, 0.125em, 12px));
+            -webkit-filter: blur(clamp(2px, 0.125em, 12px));
+            -moz-filter: blur(clamp(2px, 0.125em, 12px));
+            -ms-filter: blur(clamp(2px, 0.125em, 12px));
+        }
+
+        .button-wrap:has(button:active) .button-shadow::after {
+            top: calc(var(--shadow-cuttoff-fix) - 0.25em);
+            opacity: 0.75;
+        }
+
+        .button-wrap:has(button:active) span {
+            text-shadow: 0.025em 0.25em 0.05em rgba(0, 0, 0, 0.12);
+        }
+
+        .button-wrap:has(button:active) {
+            transform: rotate3d(1, 0, 0, 25deg);
+        }
+
+        /* ── RIPPLE (vlnky) ── */
+        .ripple {
+            position: fixed;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            pointer-events: none;
+            z-index: 1;
+            animation: rippleAnim 1s ease-out forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes rippleAnim {
+            0% {
+                transform: scale(0.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(2.8);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .buttons-grid {
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            button span {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Pozadí -->
+    <svg style="position: absolute; width: 100%; height: 100%; z-index: 0;" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <pattern id="dottedGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="rgba(0,0,0,0.15)" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dottedGrid)" />
+    </svg>
+
+    <!-- Grid Tlačítek -->
+    <div class="buttons-grid" id="grid-container">
+        <!-- Buttons will be generated by JS -->
+    </div>
+
+    <script>
+        (function() {
+            const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
+            const gridContainer = document.getElementById('grid-container');
+
+            // Generate buttons
+            letters.forEach(letter => {
+                const wrap = document.createElement('div');
+                wrap.className = 'button-wrap circle';
+                
+                const btn = document.createElement('button');
+                btn.id = `btn-${letter.toLowerCase()}`;
+                
+                const span = document.createElement('span');
+                span.textContent = letter;
+                
+                const shadow = document.createElement('div');
+                shadow.className = 'button-shadow';
+                
+                btn.appendChild(span);
+                wrap.appendChild(btn);
+                wrap.appendChild(shadow);
+                gridContainer.appendChild(wrap);
+            });
+
+            // ── sledování myši pro odlesky ──
+            const wraps = document.querySelectorAll('.button-wrap');
+
+            function updateAngles(e) {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                wraps.forEach(wrap => {
+                    const btn = wrap.querySelector('button');
+                    if (!btn) return;
+                    const rect = btn.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    
+                    // Calculate distance to only update nearby buttons for performance
+                    const dist = Math.hypot(mouseX - cx, mouseY - cy);
+                    if (dist < 200) {
+                        let angle = Math.atan2(mouseY - cy, mouseX - cx) * (180 / Math.PI);
+                        if (angle < 0) angle += 360;
+                        btn.style.setProperty('--angle-1', angle + 'deg');
+                        btn.style.setProperty('--angle-2', (angle + 20) + 'deg');
+                    }
+                });
+            }
+
+            function resetAngles() {
+                wraps.forEach(wrap => {
+                    const btn = wrap.querySelector('button');
+                    if (!btn) return;
+                    btn.style.setProperty('--angle-1', '-75deg');
+                    btn.style.setProperty('--angle-2', '-45deg');
+                });
+            }
+
+            document.addEventListener('mousemove', updateAngles);
+            document.addEventListener('mouseleave', resetAngles);
+
+            // ── vytvoření vlněk (ripples) ──
+            function createRipples(e, btn) {
+                const rect = btn.getBoundingClientRect();
+                const baseSize = Math.max(rect.width, rect.height);
+                const cx = rect.left + rect.width / 2;
+                const cy = rect.top + rect.height / 2;
+
+                const waves = [
+                    { scale: 0.8, delay: 0, duration: 0.8, opacity: 0.6, border: 'rgba(255,255,255,0.6)' },
+                    { scale: 1.2, delay: 0.12, duration: 0.9, opacity: 0.4, border: 'rgba(200,220,255,0.5)' },
+                    { scale: 1.6, delay: 0.25, duration: 1.0, opacity: 0.3, border: 'rgba(180,210,255,0.4)' },
+                    { scale: 2.0, delay: 0.40, duration: 1.1, opacity: 0.2, border: 'rgba(160,200,255,0.3)' },
+                ];
+
+                waves.forEach((w) => {
+                    const el = document.createElement('div');
+                    el.className = 'ripple';
+                    const size = baseSize * w.scale;
+                    el.style.width = size + 'px';
+                    el.style.height = size + 'px';
+                    el.style.left = (cx - size / 2) + 'px';
+                    el.style.top = (cy - size / 2) + 'px';
+                    el.style.borderColor = w.border;
+                    el.style.animationDuration = w.duration + 's';
+                    el.style.animationDelay = w.delay + 's';
+                    el.style.animationTimingFunction = 'cubic-bezier(0.25, 1, 0.5, 1)';
+                    document.body.appendChild(el);
+
+                    setTimeout(() => {
+                        el.remove();
+                    }, (w.delay + w.duration) * 1000 + 100);
+                });
+            }
+
+            // ── spuštění blop animace na tlačítku ──
+            function triggerBlop(btn) {
+                btn.classList.remove('blop-anim');
+                void btn.offsetWidth;
+                btn.classList.add('blop-anim');
+
+                const onEnd = () => {
+                    btn.classList.remove('blop-anim');
+                    btn.removeEventListener('animationend', onEnd);
+                };
+                btn.addEventListener('animationend', onEnd);
+            }
+
+            // ── obsluha kliknutí ──
+            function handleClick(e) {
+                const btn = e.currentTarget;
+                createRipples(e, btn);
+                triggerBlop(btn);
+            }
+
+            // Attach listeners to all generated buttons
+            document.querySelectorAll('button').forEach(btn => {
+                btn.addEventListener('click', handleClick);
+            });
+        })();
+    </script>
+</body>
+
+</html>
